@@ -1,12 +1,20 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Loginpageoption from './components/registration/Loginoption';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1> Hello </h1>
+        <BrowserRouter>
+          {<Switch>
+            <Route exact path='/' component={Loginpageoption} />
+
+            <Route component={Error} />
+          </Switch>}
+        </BrowserRouter>
       </header>
     </div>
   );
