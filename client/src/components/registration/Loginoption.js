@@ -19,7 +19,7 @@ const Loginoption = () => {
                     </button>
                 )} />
                 <Route render={({ history }) => (
-                    <button className='btn2' onClick={() => { history.push('/loginWardsister') }}>
+                    <button className='btn2' onClick={() => { history.push('/Indentform') }}>
                         LOGIN to INDENT
                     </button>
                 )} />

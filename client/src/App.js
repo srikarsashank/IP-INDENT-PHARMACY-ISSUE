@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Loginpageoption from './components/registration/Loginoption';
-import Indentform from './components/dashboard/Indentform';
+// import Indentform from './components/dashboard/Indentform';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
         <BrowserRouter>
           {<Switch>
             <Route exact path='/' component={Loginpageoption} />
-            <Route exact path='/Indentform' component={Indentform} />
+            {/* <Route exact path='/Indentform' component={Indentform} /> */}
 
             <Route component={Error} />
           </Switch>}

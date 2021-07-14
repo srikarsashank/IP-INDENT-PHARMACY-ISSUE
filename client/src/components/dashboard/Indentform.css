@@ -1,6 +1,6 @@
 body {
     font: normal 18px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
-    background: white;
+    background: aquamarine;
     color: black;
     padding: 50px 0;
     min-height: 100vh;
@@ -56,6 +56,7 @@ body {
     font-weight: 300;
     letter-spacing: .09em;
     text-transform: uppercase;
+    border-color: black;
   }
   
   .flex-outer > li > label,
@@ -77,6 +78,7 @@ body {
   .flex-outer li textarea {
     padding: 15px;
     border: none;
+    border-color: black;
   }
   
   .flex-outer li button {
