@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
+//import Swal from 'sweetalert2'
 import './Indentform.css';
 
 export default class Indentform extends Component {
@@ -10,7 +12,7 @@ export default class Indentform extends Component {
             wardno: "",
             bedno: "",
             consultant: "",
-            item: ""
+            items: ""
         }
     }
     handleChangepatientid = (event) => {
@@ -29,28 +31,41 @@ export default class Indentform extends Component {
         this.setState({ consultant: event.target.value });
     }
     handleChangeitem = (event) => {
-        this.setState({ item: event.target.value });
+        this.setState({ items: event.target.value });
     }
 
-    handleSubmit = (event) => {
+    submit = (event) => {
         event.preventDefault();
-        console.log(`
-        Patientid : ${this.state.patientid}
-        Patientname : ${this.state.patientname}
-        ward no : ${this.state.wardno}
-        bed no : ${this.state.bedno}
-        consultant : ${this.state.consultant}
-        items/qty : ${this.state.item}
-        `);
+
+        const url = 'http://localhost:5000/indent';
+        const data = {
+            patientid: this.state.patientid,
+            patientname: this.state.patientname,
+            wardno: this.state.wardno,
+            bedno: this.state.bedno,
+            consultant: this.state.consultant,
+            items: this.state.items,
+        };
+        console.log(data);
+        axios.post(url, data)
+            .then(res => {
+                res.json(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+
+
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.submit}>
                 <body>
                     <h2 style={{ color: 'black' }}> Indent Form</h2>
-                    <div class="container">
-                        <ul class="flex-outer">
+                    <div className="container">
+                        <ul className="flex-outer">
                             <li>
                                 <label className="l1">Patient Id</label>
                                 <input type="text" id="patientid" value={this.state.patientid} onChange={this.handleChangepatientid} placeholder="Enter patient id here" />
@@ -73,8 +88,8 @@ export default class Indentform extends Component {
                             </li>
                             <li>
                                 <label className="l1" >Item/ QUANTITY</label>
-                                <input type="text" id="item" value={this.state.item} onChange={this.handleChangeitem} placeholder="Enter medicine req. here" />
-                                <input type="number" id="qty" />
+                                <input type="text" id="item" value={this.state.items} onChange={this.handleChangeitem} placeholder="Enter medicine req. here" />
+                                {/* <input type="number" id="qty" /> */}
                             </li>
                             <li>
                                 <button type="submit">RAISE INDENT</button>
