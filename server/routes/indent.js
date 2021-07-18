@@ -27,4 +27,32 @@ router.post('/', (req, res) => {
     })
 });
 
+// GET request for NewIndent
+router.get('/all', (req, res) => {
+
+    indent.find({}, (err, newindents) => {
+        if (err)
+            console.error(err);
+
+        // var indents = [];
+        // newindents.forEach((element) => {
+        //     // var object = {
+        //     //     "patientid": element['patientid'],
+        //     //     "patientname": element['patientname'],
+        //     //     "wardno": element['wardno'],
+        //     //     "bedno": element['bedno'],
+        //     //     "consultant": element['consultant'],
+        //     //     "items": element['items']
+
+        //     // }
+        //     indents.push(element);
+        // });
+
+        // console.log(indents);
+        res.json(newindents);
+
+    })
+});
+
+
 export default router;

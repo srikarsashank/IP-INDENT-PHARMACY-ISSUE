@@ -14,7 +14,7 @@ const Loginoption = () => {
 
             <div className='button'>
                 <Route render={({ history }) => (
-                    <button className='btn1' onClick={() => { history.push('/loginPharmacist') }}>
+                    <button className='btn1' onClick={() => { history.push('/Newindent') }}>
                         LOGIN as PHARMACIST
                     </button>
                 )} />

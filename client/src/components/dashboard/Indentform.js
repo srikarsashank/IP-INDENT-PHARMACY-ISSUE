@@ -37,7 +37,6 @@ export default class Indentform extends Component {
     submit = (event) => {
         event.preventDefault();
 
-        const url = 'http://localhost:5000/indent';
         const data = {
             patientid: this.state.patientid,
             patientname: this.state.patientname,
@@ -47,15 +46,14 @@ export default class Indentform extends Component {
             items: this.state.items,
         };
         console.log(data);
-        axios.post(url, data)
+
+        axios.post('http://localhost:5000/indent', data)
             .then(res => {
                 res.json(res.data);
             })
             .catch(err => {
                 console.log(err);
             })
-
-
 
     }
 

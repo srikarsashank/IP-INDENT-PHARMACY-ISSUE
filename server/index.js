@@ -2,7 +2,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import postRoutes from './routes/posts.js';
 import indent from './routes/indent.js';
 
 const app = express();
