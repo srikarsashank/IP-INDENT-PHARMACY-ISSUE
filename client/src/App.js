@@ -3,9 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import Loginpageoption from './components/registration/Loginoption';
 import Indentform from './components/dashboard/Indentform';
-import Newindent from './components/dashboard/Newindent';
-import AvailableItems from './components/dashboard/AvailableItems';
+import Indentpharma from './components/dashboard/Indentpharma';
+import Issuedindentsmain from './components/dashboard/Issuedindentsmain';
+import Issuedindents_ws from './components/dashboard/Issuedindents_ws';
+import Raisedindents_ws from './components/dashboard/Raisedindents_ws';
+import Availabledrugs from './components/dashboard/Availabledrugs';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -15,8 +19,11 @@ function App() {
           {<Switch>
             <Route exact path='/' component={Loginpageoption} />
             <Route exact path='/Indentform' component={Indentform} />
-            <Route exact path='/Availableitems' component={AvailableItems} />
-            <Route exact path='/Newindent' component={Newindent} />
+            <Route exact path='/Availabledrugs' component={Availabledrugs} />
+            <Route exact path='/Newindent' component={Indentpharma} />
+            <Route exact path='/Issuedindent' component={Issuedindentsmain} />
+            <Route exact path='/Issuedindentws' component={Issuedindents_ws} />
+            <Route exact path='/Raisedindents' component={Raisedindents_ws} />
 
             <Route component={Error} />
           </Switch>}

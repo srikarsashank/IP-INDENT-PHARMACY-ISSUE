@@ -8,29 +8,29 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import NavigationBar_ip from './NavigationBar_ip';
-import img from './img.jpg';
 
 const Swal = require('sweetalert2');
 
-export default class Newindent extends Component {
+export default class Issuedindent extends Component {
 
     state = {
-        indents: []
+        issuedindents: []
     };
 
     componentDidMount() {
-        this.getIndent();
+        this.getIssuedIndent();
     };
 
-    getIndent() {
+    getIssuedIndent() {
 
-        axios.get('http://localhost:5000/indent/all')
+        axios.get('http://localhost:5000/raisedindent/issue/issueall')
             .then((response) => {
                 const data = response.data;
-                // console.log(data);
-                this.setState({ indents: data });
+                console.log(data);
+                console.log("2");
+                this.setState({ issuedindents: data });
 
-                console.log("data from mongo recieved to newindents");
+                console.log("data from mongo recieved to issuedindents");
 
 
             })
@@ -40,47 +40,16 @@ export default class Newindent extends Component {
             })
     }
 
-    handlesubmit(patientid, patientname, wardno, bedno, consultant, items) {
-
-        const data = {
-            patientid: patientid,
-            patientname: patientname,
-            wardno: wardno,
-            bedno: bedno,
-            consultant: consultant,
-            items: items,
-        };
-
-        axios.post('http://localhost:5000/raisedindent/issue', data)
-            .then(() => {
-
-                Swal.fire({
-                    title: 'successful',
-                    text: "Click ok to issue indent",
-                    icon: 'success',
-                    confirmButtonText: 'ok'
-                })
-                    .then(res => {
-                        res.json(res.data);
-                        console.log(data);
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
-
-            })
-            .catch((error) => {
-                console.log("error while issuing data", error);
-            });
-    }
-
 
     render() {
 
-        const indentslist = this.state.indents;
+        const indentslist = this.state.issuedindents;
+
         return indentslist.map((item, index) => {
+
             return (
                 <div className='mt-3'>
+
                     <Card style={{ width: '40rem' }}>
                         <Card.Body >
                             <Card.Title style={{ color: 'black' }} >{item.patientname} ({item.patientid})</Card.Title>
@@ -108,11 +77,9 @@ export default class Newindent extends Component {
                                     </Col>
                                 </Row>
                             </Accordion>
-                            <button style={{ width: '20rem', backgroundColor: 'cyan' }} type="submit" onClick={() => this.handlesubmit(item.patientid, item.patientname, item.wardno, item.bedno, item.consultant, item.items)}>ISSUE</button>
                         </Card.Body>
                     </Card>
                 </div>
-
 
             )
         })

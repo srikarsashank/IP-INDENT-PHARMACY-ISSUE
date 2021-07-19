@@ -7,6 +7,10 @@ body {
     width: 100%;
     align-content: flex-start;
   }
+
+  .tot{
+    background-image: url("./img.jpg");
+  }
   
   .container {
     width: auto;

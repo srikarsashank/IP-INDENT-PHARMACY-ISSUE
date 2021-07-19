@@ -1,11 +1,11 @@
 import express from 'express';
-import indent from '../models/formdata.js';
+import issuedindent from '../models/raisedindents.js';
 const router = express.Router();
 
-// POST request for indent
-router.post('/', (req, res) => {
+// POST request for raisedindent
+router.post('/issue', (req, res) => {
     //res.json(req.body.patientid);
-    const newindent = indent(
+    const newindent = issuedindent(
         {
             patientname: req.body.patientname,
             patientid: req.body.patientid,
@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
     );
 
     const data = req.body;
-    const newdata = new indent(data);
+    const newdata = new issuedindent(data);
     newdata.save((err) => {
         if (err) {
             res.status(500);
@@ -27,16 +27,16 @@ router.post('/', (req, res) => {
     })
 });
 
-// GET request for NewIndent
-router.get('/all', (req, res) => {
+//GET REQUEST FOR ISSUED INDENTS
+router.get('/issueall', (req, res) => {
 
-    indent.find({}, (err, newindents) => {
+    issuedindent.find({}, (err, issuedindents) => {
         if (err)
             console.error(err);
-        res.json(newindents);
+
+        res.json(issuedindents);
 
     })
 });
-
 
 export default router;
