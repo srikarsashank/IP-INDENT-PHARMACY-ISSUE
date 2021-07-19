@@ -39,7 +39,7 @@ export class NavigationBar_ws extends Component {
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/">Logout</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">About the application</NavDropdown.Item>
+                <NavDropdown.Item href="/About">About the application</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

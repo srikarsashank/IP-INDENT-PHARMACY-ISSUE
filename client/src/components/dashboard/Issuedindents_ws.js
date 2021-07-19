@@ -7,7 +7,6 @@ export default class Indentpharma extends Component {
     render() {
         return (
             <div>
-                <h2 style={{ color: 'black', fontFamily: 'Jazz LET' }}> Navigation Bar</h2>
                 <NavigationBar_ws />
                 <Issuedindent />
             </div>

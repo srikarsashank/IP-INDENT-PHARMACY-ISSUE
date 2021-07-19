@@ -5,6 +5,9 @@ import NavigationBar_ws from './NavigationBar_ws';
 
 const Swal = require('sweetalert2');
 
+var isEmpty = false;
+
+
 export default class Indentform extends Component {
     constructor(props) {
         super(props);
@@ -16,7 +19,7 @@ export default class Indentform extends Component {
             wardno: "",
             bedno: "",
             consultant: "",
-            items: ""
+            items: "",
         }
     }
     handleChangewardsisterid = (event) => {
@@ -58,31 +61,45 @@ export default class Indentform extends Component {
             items: this.state.items,
         };
         console.log(data);
+        if (this.state.wardsisterid == ' ' || this.state.wardsistername == '' || this.state.patientid == '' || this.state.patientname == '' || this.state.wardno == '' || this.state.bedno == '' || this.state.consultant == '' || this.state.items == '') {
+            isEmpty = true;
 
-        axios.post('http://localhost:5000/indent', data)
-            .then(() => {
-
-                Swal.fire({
-                    title: 'SUCCESSFUL!',
-                    text: "Click 'Continue' to raise indent successfully",
-                    icon: 'success',
-                    confirmButtonText: 'Continue'
-                })
-                    .then(res => {
-                        res.json(res.data);
-                        console.log(data);
-                        window.location.replace('/Raisedindents');
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
-
-
-
+        }
+        console.log(isEmpty);
+        if (isEmpty) {
+            Swal.fire({
+                title: 'Error!!',
+                text: "Don't leave any field empty for security issues",
+                type: "error",
+                confirmButtonText: 'retry'
             })
-            .catch((error) => {
-                console.log("error while issuing data", error);
-            });
+        }
+        else {
+            axios.post('http://localhost:5000/indent', data)
+                .then(() => {
+
+                    Swal.fire({
+                        title: 'SUCCESSFUL!',
+                        text: "Click 'Continue' to raise indent successfully",
+                        type: "success",
+                        confirmButtonText: 'Continue'
+                    })
+                        .then(res => {
+                            res.json(res.data);
+                            console.log(data);
+
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+
+
+
+                })
+                .catch((error) => {
+                    console.log("error while issuing data", error);
+                });
+        }
 
     }
 
@@ -129,7 +146,8 @@ export default class Indentform extends Component {
                                     {/* <input type="number" id="qty" /> */}
                                 </li>
                                 <li>
-                                    <button type="submit">RAISE INDENT</button>
+                                    <button style={{ backgroundColor: 'red' }}> RAISE EMERGENCY INDENT</button>
+                                    <button className="btn btn-deafault" type="submit">RAISE INDENT</button>
                                 </li>
                             </ul>
                         </div>

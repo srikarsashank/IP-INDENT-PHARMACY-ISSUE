@@ -1,7 +1,6 @@
 import express from 'express';
 import indent from '../models/formdata.js';
 const router = express.Router();
-
 // POST request for indent
 router.post('/', (req, res) => {
     //res.json(req.body.patientid);
