@@ -26,8 +26,8 @@ export default class Issuedindent extends Component {
         axios.get('http://localhost:5000/raisedindent/issue/issueall')
             .then((response) => {
                 const data = response.data;
-                console.log(data);
-                console.log("2");
+                // console.log(data);
+                // console.log("2");
                 this.setState({ issuedindents: data });
 
                 console.log("data from mongo recieved to issuedindents");
@@ -52,13 +52,16 @@ export default class Issuedindent extends Component {
 
                     <Card style={{ width: '40rem' }}>
                         <Card.Body >
-                            <Card.Title style={{ color: 'black' }} >{item.patientname} ({item.patientid})</Card.Title>
+                            <Card.Title style={{ color: 'black' }} >{item.patientid}</Card.Title>
                             {/* <Card.Subtitle style={{ textAlign: 'left' }} className="mb-2 text-muted" >PATIENTNAME: {item.patientname}</Card.Subtitle> */}
                             <Card.Subtitle className="mb-2 text-muted" style={{ textAlign: 'left' }} >
                                 Indent: {item.items}
                             </Card.Subtitle>
                             <Card.Subtitle className="mb-2 text-muted" style={{ textAlign: 'left' }} >
                                 CONSULTANT: {item.consultant}
+                            </Card.Subtitle>
+                            <Card.Subtitle className="mb-2 text-muted" style={{ textAlign: 'left' }} >
+                                Wardsister ID: {item.wardsisterid}
                             </Card.Subtitle>
                             <Accordion defaultActiveKey="0">
                                 <Row className="m-0">
@@ -68,6 +71,12 @@ export default class Issuedindent extends Component {
                                                 Click to View More
                                             </Accordion.Toggle>
                                         </Row>
+                                        <Accordion.Collapse eventKey="1">
+                                            <Row style={{ textAlign: 'left', color: 'black', fontFamily: 'cursive', fontSize: '20px' }} className="p-2" >WardsisterName: {item.wardsistername}</Row>
+                                        </Accordion.Collapse>
+                                        <Accordion.Collapse eventKey="1">
+                                            <Row style={{ textAlign: 'left', color: 'black', fontFamily: 'cursive', fontSize: '20px' }} className="p-2" >PatientName: {item.patientname}</Row>
+                                        </Accordion.Collapse>
                                         <Accordion.Collapse eventKey="1">
                                             <Row style={{ textAlign: 'left', color: 'black', fontFamily: 'cursive', fontSize: '20px' }} className="p-2" >Ward No: {item.wardno}</Row>
                                         </Accordion.Collapse>

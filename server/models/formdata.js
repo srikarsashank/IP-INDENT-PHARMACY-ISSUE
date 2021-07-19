@@ -3,6 +3,15 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const indent = new Schema({
+
+    wardsisterid: {
+        type: String,
+        required: [true, "Wardsister is required"]
+    },
+    wardsistername: {
+        type: String,
+        required: [true, "WardsisterName is required"]
+    },
     patientid: {
         type: String,
         required: [true, "PatientId is required"]

@@ -40,9 +40,11 @@ export default class Newindent extends Component {
             })
     }
 
-    handlesubmit(patientid, patientname, wardno, bedno, consultant, items) {
+    handlesubmit(wardsisterid, wardsistername, patientid, patientname, wardno, bedno, consultant, items) {
 
         const data = {
+            wardsisterid: wardsisterid,
+            wardsistername: wardsistername,
             patientid: patientid,
             patientname: patientname,
             wardno: wardno,
@@ -83,13 +85,16 @@ export default class Newindent extends Component {
                 <div className='mt-3'>
                     <Card style={{ width: '40rem' }}>
                         <Card.Body >
-                            <Card.Title style={{ color: 'black' }} >{item.patientname} ({item.patientid})</Card.Title>
+                            <Card.Title style={{ color: 'black' }} >{item.patientid}</Card.Title>
                             {/* <Card.Subtitle style={{ textAlign: 'left' }} className="mb-2 text-muted" >PATIENTNAME: {item.patientname}</Card.Subtitle> */}
                             <Card.Subtitle className="mb-2 text-muted" style={{ textAlign: 'left' }} >
                                 Indent: {item.items}
                             </Card.Subtitle>
                             <Card.Subtitle className="mb-2 text-muted" style={{ textAlign: 'left' }} >
                                 CONSULTANT: {item.consultant}
+                            </Card.Subtitle>
+                            <Card.Subtitle className="mb-2 text-muted" style={{ textAlign: 'left' }} >
+                                Wardsister ID: {item.wardsisterid}
                             </Card.Subtitle>
                             <Accordion defaultActiveKey="0">
                                 <Row className="m-0">
@@ -100,6 +105,12 @@ export default class Newindent extends Component {
                                             </Accordion.Toggle>
                                         </Row>
                                         <Accordion.Collapse eventKey="1">
+                                            <Row style={{ textAlign: 'left', color: 'black', fontFamily: 'cursive', fontSize: '20px' }} className="p-2" >WardsisterName: {item.wardsistername}</Row>
+                                        </Accordion.Collapse>
+                                        <Accordion.Collapse eventKey="1">
+                                            <Row style={{ textAlign: 'left', color: 'black', fontFamily: 'cursive', fontSize: '20px' }} className="p-2" >PatientName: {item.patientname}</Row>
+                                        </Accordion.Collapse>
+                                        <Accordion.Collapse eventKey="1">
                                             <Row style={{ textAlign: 'left', color: 'black', fontFamily: 'cursive', fontSize: '20px' }} className="p-2" >Ward No: {item.wardno}</Row>
                                         </Accordion.Collapse>
                                         <Accordion.Collapse eventKey="1">
@@ -108,7 +119,7 @@ export default class Newindent extends Component {
                                     </Col>
                                 </Row>
                             </Accordion>
-                            <button style={{ width: '20rem', backgroundColor: 'cyan' }} type="submit" onClick={() => this.handlesubmit(item.patientid, item.patientname, item.wardno, item.bedno, item.consultant, item.items)}>ISSUE</button>
+                            <button style={{ width: '20rem', backgroundColor: 'cyan' }} type="submit" onClick={() => this.handlesubmit(item.wardsisterid, item.wardsistername, item.patientid, item.patientname, item.wardno, item.bedno, item.consultant, item.items)}>ISSUE</button>
                         </Card.Body>
                     </Card>
                 </div>

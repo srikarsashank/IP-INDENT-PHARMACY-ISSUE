@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-//import Swal from 'sweetalert2'
 import './Indentform.css';
 import NavigationBar_ws from './NavigationBar_ws';
-// import img from './img.png';
+
+const Swal = require('sweetalert2');
 
 export default class Indentform extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            wardsisterid: "",
+            wardsistername: "",
             patientid: "",
             patientname: "",
             wardno: "",
@@ -16,6 +18,12 @@ export default class Indentform extends Component {
             consultant: "",
             items: ""
         }
+    }
+    handleChangewardsisterid = (event) => {
+        this.setState({ wardsisterid: event.target.value });
+    }
+    handleChangewardsistername = (event) => {
+        this.setState({ wardsistername: event.target.value });
     }
     handleChangepatientid = (event) => {
         this.setState({ patientid: event.target.value });
@@ -40,6 +48,8 @@ export default class Indentform extends Component {
         event.preventDefault();
 
         const data = {
+            wardsisterid: this.state.wardsisterid,
+            wardsistername: this.state.wardsistername,
             patientid: this.state.patientid,
             patientname: this.state.patientname,
             wardno: this.state.wardno,
@@ -50,12 +60,29 @@ export default class Indentform extends Component {
         console.log(data);
 
         axios.post('http://localhost:5000/indent', data)
-            .then(res => {
-                res.json(res.data);
+            .then(() => {
+
+                Swal.fire({
+                    title: 'SUCCESSFUL!',
+                    text: "Click 'Continue' to raise indent successfully",
+                    icon: 'success',
+                    confirmButtonText: 'Continue'
+                })
+                    .then(res => {
+                        res.json(res.data);
+                        console.log(data);
+                        window.location.replace('/Raisedindents');
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+
+
+
             })
-            .catch(err => {
-                console.log(err);
-            })
+            .catch((error) => {
+                console.log("error while issuing data", error);
+            });
 
     }
 
@@ -68,6 +95,14 @@ export default class Indentform extends Component {
                         <h2 style={{ color: 'black' }}> Indent Form</h2>
                         <div className="container">
                             <ul className="flex-outer">
+                                <li>
+                                    <label className="l1">WardSister Id</label>
+                                    <input type="text" id="patientid" value={this.state.wardsisterid} onChange={this.handleChangewardsisterid} placeholder="Enter wardsister id here" />
+                                </li>
+                                <li>
+                                    <label className="l1"> WardSister Name</label>
+                                    <input type="text" id="patientname" value={this.state.wardsistername} onChange={this.handleChangewardsistername} placeholder="Enter wardsister name here" />
+                                </li>
                                 <li>
                                     <label className="l1">Patient Id</label>
                                     <input type="text" id="patientid" value={this.state.patientid} onChange={this.handleChangepatientid} placeholder="Enter patient id here" />

@@ -7,8 +7,10 @@ router.post('/issue', (req, res) => {
     //res.json(req.body.patientid);
     const newindent = issuedindent(
         {
-            patientname: req.body.patientname,
+            wardsisterid: req.body.wardsisterid,
+            wardsistername: req.body.wardsistername,
             patientid: req.body.patientid,
+            patientname: req.body.patientname,
             wardno: req.body.wardno,
             bedno: req.body.bedno,
             consultant: req.body.consultant,
