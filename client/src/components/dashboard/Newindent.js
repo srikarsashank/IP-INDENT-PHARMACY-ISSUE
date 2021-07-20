@@ -59,7 +59,7 @@ export default class Newindent extends Component {
                 Swal.fire({
                     title: 'successful',
                     text: "Click ok to issue indent",
-                    icon: 'success',
+                    type: 'success',
                     confirmButtonText: 'ok'
                 })
                     .then(res => {
@@ -83,7 +83,7 @@ export default class Newindent extends Component {
         return indentslist.map((item, index) => {
             return (
                 <div className='mt-3'>
-                    <Card style={{ width: '40rem' }}>
+                    <Card style={{ width: '40rem', alignContent: 'center', marginLeft: '350px' }}>
                         <Card.Body >
                             <Card.Title style={{ color: 'black' }} >{item.patientid}</Card.Title>
                             {/* <Card.Subtitle style={{ textAlign: 'left' }} className="mb-2 text-muted" >PATIENTNAME: {item.patientname}</Card.Subtitle> */}
@@ -96,6 +96,7 @@ export default class Newindent extends Component {
                             <Card.Subtitle className="mb-2 text-muted" style={{ textAlign: 'left' }} >
                                 Wardsister ID: {item.wardsisterid}
                             </Card.Subtitle>
+                            {/* <Card.Img variant="bottom" className="im" style={{ marginLeft: '300px', marginTop: '-100px', width: '100px', height: '80px' }} src="https://www.crushpixel.com/big-static7/preview4/emergency-icon-139148.jpg" /> */}
                             <Accordion defaultActiveKey="0">
                                 <Row className="m-0">
                                     <Col className="">

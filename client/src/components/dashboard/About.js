@@ -18,11 +18,11 @@ export default class About extends Component {
                         Go back to IssuedIndents page
                     </button>
                 )} />
-                <div className="about-section" style={{ marginBottom: '80px', marginTop: '50px' }}>
-                    <h1 style={{ textDecoration: 'underline', marginRight: '50px', marginBottom: '20px' }}>About us</h1>
-                    <p>This application takes you to all the instructions for using this application fluently with the maximum use.</p>
+                <div className="about-section" style={{ marginBottom: '80px', marginTop: '50px', width: '100rem' }}>
+                    <h1 style={{ textDecoration: 'underline', marginRight: '50px', marginBottom: '20px' }}>About the software</h1>
+                    <p>The contents in this browser guides you for using this application fluently and efficiently.</p>
                 </div>
-                <div style={{ marginLeft: '400px' }}>
+                <div style={{ marginLeft: '550px' }}>
                     <Card style={{ width: '40rem', height: '4rem', marginBottom: '50px' }}>
                         <Card.Body style={{ backgroundColor: 'cyan' }}>
                             <Card.Subtitle className="mb-2 text-muted" style={{ textAlign: 'left', fontSize: '20px', fontWeight: 'bold', color: 'black' }} >

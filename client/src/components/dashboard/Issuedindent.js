@@ -50,7 +50,7 @@ export default class Issuedindent extends Component {
             return (
                 <div className='mt-3'>
 
-                    <Card style={{ width: '40rem' }}>
+                    <Card style={{ width: '40rem', marginLeft: '350px' }}>
                         <Card.Body >
                             <Card.Title style={{ color: 'black' }} >{item.patientid}</Card.Title>
                             {/* <Card.Subtitle style={{ textAlign: 'left' }} className="mb-2 text-muted" >PATIENTNAME: {item.patientname}</Card.Subtitle> */}

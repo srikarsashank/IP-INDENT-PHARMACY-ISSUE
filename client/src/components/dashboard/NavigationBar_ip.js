@@ -27,19 +27,18 @@ export class NavigationBar_ip extends Component {
 
   render() {
     return (
-      <Navbar bg="primary" expand="lg" variant="dark" style={{ marginLeft: '-100px', width: '60rem', height: '4rem' }} >
+      <Navbar bg="light" expand="lg" variant="light" style={{ marginLeft: '-100px', width: '100rem', height: '4rem' }} >
         <Container>
           {/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand> */}
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href='/Newindent' style={{ marginRight: '60px', color: 'black', fontWeight: 'bold' }}>NewIndents</Nav.Link>
-              <Nav.Link href='/Issuedindent' style={{ marginRight: '60px', color: 'black', fontWeight: 'bold' }}>IssuedIndents</Nav.Link>
-              <Nav.Link href='/Availabledrugs' style={{ marginRight: '100px', color: 'black', fontWeight: 'bold' }}>AvailableDrugs</Nav.Link>
+              <Nav.Link href='/Newindent' style={{ marginRight: '100px', color: 'orange', fontWeight: 'bold' }}>NewIndents</Nav.Link>
+              <Nav.Link href='/Issuedindent' style={{ marginRight: '100px', color: 'orange', fontWeight: 'bold' }}>IssuedIndents</Nav.Link>
+              <Nav.Link href='/Availabledrugs' style={{ marginRight: '450px', color: 'orange', fontWeight: 'bold' }}>AvailableDrugs</Nav.Link>
               <NavDropdown title="MORE" id="basic-nav-dropdown" style={{ color: 'black' }}>
                 {/* <NavDropdown.Item href="#action/3.1">Logout</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">About</NavDropdown.Item> */}
-                <NavDropdown.Divider />
                 <NavDropdown.Item href="/">Logout</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/About">About the application</NavDropdown.Item>
