@@ -1,0 +1,29 @@
+.container {
+  color: black;
+}
+.table {
+  color: black;
+  margin-top: -100px;
+  margin-left: 50px;
+  width: 500px;
+  height: 200px;
+}
+
+.head {
+  background: rgba(33, 150, 243, 1);
+  width: 400px;
+  height: 80px;
+  font-size: larger;
+  margin-bottom: 100px;
+  margin-left: 50px;
+  top: 100px;
+}
+
+.one{
+  background: rgba(33, 150, 243, 1);
+  width: 400px;
+  height: 50px;
+  font-size: large;
+  margin-bottom: 50px;
+  margin-left: 50px;
+}
